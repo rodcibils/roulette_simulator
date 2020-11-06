@@ -5,12 +5,12 @@
 // Class Constructor
 Roulette::Roulette()
 {
+    srand((unsigned)time(NULL));
 }
 
 // Return a random number between 0 and MAX_NUM
 int Roulette::throwRoulette()
 {
-    srand((unsigned)time(NULL));
     return rand() % MAX_NUM;
 }
 
