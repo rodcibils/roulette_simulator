@@ -1,9 +1,6 @@
 #ifndef ROULETTE_HPP
 #define ROULETTE_HPP
 
-#include <map>
-#include <stdint.h>
-
 #define MAX_NUM 37
 #define BLACK_NUM_COUNT 18
 
