@@ -23,14 +23,18 @@ public:
     Player(int style);
     // Determines the result of the current play
     void determinePlay(int number);
+    // Get balance of player
+    int getBalance();
+    // Player names
+    static const char names[PLAY_COUNT];
 
 private:
     // Player playing style
     int play_style;
     // Player current wallet
     std::deque<int> wallet;
-    // Player names
-    const char names[PLAY_COUNT] = {'A', 'B', 'C', 'D', 'E', 'F'};
+    // Player earnings balance
+    int balance;
     // Initialize player wallet
     void initWallet();
 };

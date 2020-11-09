@@ -2,10 +2,13 @@
 #include <roulette.hpp>
 #include <iostream>
 
+const char  Player::names[PLAY_COUNT] = {'A', 'B', 'C', 'D', 'E', 'F'};
+
 // Class Constructor
 Player::Player(int style)
 {
     play_style = style;
+    balance = 0;
     initWallet();
 }
 
@@ -13,6 +16,12 @@ Player::Player(int style)
 void Player::initWallet()
 {
     wallet = {1, 2, 3, 4};
+}
+
+// Get balance of player
+int Player::getBalance()
+{
+	return balance;
 }
 
 // Determines the result of the current play
@@ -56,16 +65,20 @@ void Player::determinePlay(int number)
 	if(hasWon) {
 		// The player won this throw
 		std::cout << " -- WON!" << std::endl;
-		// Add earning at the end of the player's wallet
+		// Add earnings at the end of the player's wallet
 		wallet.push_back(bet);
+		// Add earnings to player balance
+		balance += bet;
 		return;
 	}
 	// The player lose this throw
 	std::cout << " -- LOSE!" << std::endl;
+	// Subtract loses to player balance
+	balance -= bet;
 	// Remove first and last element of the wallet
 	wallet.pop_front();
 	if(wallet.size() > 0) wallet.pop_back();
-	// If the wallet is empty, it is refilled to initial state
+	// If the wallet is empty, it is refilled
 	if(wallet.size() == 0){
 		initWallet();
 	}

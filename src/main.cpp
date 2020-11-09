@@ -12,7 +12,6 @@ int main(int argc, char **argv)
     for(size_t i=0; i<PLAY_COUNT; ++i) {
         players[i] = new Player(i);
     }
-
     // Roulette initialization
     Roulette *roulette = new Roulette();
 
@@ -24,5 +23,16 @@ int main(int argc, char **argv)
         for(size_t j=0; j<PLAY_COUNT; ++j){
             players[j]->determinePlay(curNumber);
         }
+        std::cout << std::endl;
     }
+
+    // Display players final balance
+    int finalBalance = 0;
+    std::cout << std::endl << std::endl;
+    for(size_t i=0; i<PLAY_COUNT; ++i){
+        int curBalance = players[i]->getBalance();
+        std::cout << "Player " << Player::names[i] << " final balance: " << curBalance << std::endl;
+        finalBalance += curBalance;
+    }
+    std::cout << "TOTAL BALANCE: " << finalBalance << std::endl;
 }
